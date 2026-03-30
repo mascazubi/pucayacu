@@ -1,0 +1,264 @@
+/* A Modern CSS Reset https://www.joshwcomeau.com/css/custom-css-reset/ */
+
+/* 1. Use a more-intuitive box-sizing model */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* 2. Remove default margin */
+*:not(dialog) {
+  margin: 0;
+}
+
+/* 3. Enable keyword animations */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    interpolate-size: allow-keywords;
+  }
+}
+
+body {
+  /* 4. Increase line-height */
+  line-height: 1.5;
+  /* 5. Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 6. Improve media defaults */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 7. Inherit fonts for form controls */
+input, button, textarea, select {
+  font: inherit;
+}
+
+/* 8. Avoid text overflows */
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+/* 9. Improve line wrapping */
+p {
+  text-wrap: pretty;
+}
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+}
+
+/*
+  10. Create a root stacking context
+*/
+#root, #__next {
+  isolation: isolate;
+}
+
+/* the real dark souls starts here */
+
+:root {
+  --p-sm: 1rem;
+
+  --f-h1: 5rem;
+  --f-h2: 3.5rem;
+  --f-h3: 2rem;
+  --f-h4: 1.5rem;
+}
+
+body {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr clamp(350px, 70ch, 100%) 1fr;
+  font-size: 22px;
+  font-family: "EB Garamond", Georgia, 'Times New Roman', Times, serif;
+}
+
+.cover {
+  grid-column: 1 / 4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color:wheat;
+  height: 100svh;
+}
+
+main {
+  grid-column: 2 / 3 ;
+  max-width: 67ch;
+  margin-inline: auto;
+  padding-inline: var(--p-sm);
+}
+
+.toc-container {
+  grid-column:  1 / 4;
+  position: sticky;
+  bottom: 0;
+  background: white;
+  padding-inline: var(--p-sm);
+}
+
+.toc-handle {
+  display: block;
+  text-align: center;
+  border: none;
+  background-color: aliceblue;
+  width: 100%;
+  cursor: pointer;
+}
+
+.toc-index {
+  display: none;
+  margin-bottom: 1rem;
+  color: gray;
+}
+
+#toc {
+  max-width: 35ch;
+  min-width: 20ch;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  
+  .h3,
+  .h4 {
+    margin-left: 2rem;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
+section {
+  margin-block: 6rem;
+}
+
+h1 {
+  font-size: var(--f-h1);
+  text-align: center;
+}
+
+
+h2,
+section > span {
+  font-size: var(--f-h2);
+  font-weight: bold;
+}
+
+h3 {
+  font-size: var(--f-h3);
+  font-weight: bold;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+h4 {
+  font-size: var(--f-h4);
+  margin-top: 2rem;
+}
+
+* + ol,
+*  + ul,
+*  + strong,
+* + p {
+  margin-top: 1.5rem;
+}
+
+p {
+  text-indent: 2rem;
+}
+
+strong {
+  display: block;
+}
+
+.insert {
+  padding: 1rem;
+  background-color:antiquewhite;
+  border: 1px solid gold;
+  margin-block: 2rem;
+}
+
+.col-2 {
+  display: flex;
+  gap: 2rem;
+  justify-content: space-between;
+  align-items: start;
+  flex-wrap: wrap;
+  
+  &p {
+    max-width:50%;
+  }
+}
+
+.text-right{
+  text-align: right;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.no-tab {
+  text-indent: 0;
+}
+
+.quote {
+  padding: 2rem;
+  margin-block: 2rem;
+  position: relative;
+
+  &::before,
+  &::after {
+    position: absolute;
+    font-size: 7rem;
+    opacity: 0.5;
+    z-index: -1;
+    line-height: 1;
+  }
+
+  &::before {
+    content: '“';
+    top: -18px;
+    left: 0;
+  }
+
+  &::after {
+    content: '”';
+    bottom: -60px;
+    right: 8px;
+  }
+}
+
+@media only screen and (min-width: 922px) {
+  body{
+    gap: 1rem;
+  }
+  main {
+    padding-inline: unset;
+  }
+  .toc-container {
+    grid-column: 3 / 4;
+    bottom: unset;
+    padding-inline: unset;
+    top:0;
+  }
+  .toc-handle {
+    display: none;
+  }
+  .toc {
+    position: sticky;
+    top:0;
+    padding-top: 2rem;
+  }
+  .toc-index {
+    display: block;
+  }
+  .insert,
+  .quote {
+    padding-inline: 3rem;
+    padding-block: 2rem;
+  }
+}
