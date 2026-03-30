@@ -113,19 +113,41 @@ body {
     top: 0;
     left: 0;
     display: flex;
-    justify-content: start;
-    padding-top: 15vh;
+    justify-content: space-between;
+    padding-top: 10dvh;
     align-items: center;
     flex-direction: column;
+    text-shadow: 0 1px 8px #00000040;
 
-    & span {
-      font-size: 8rem;
-    }
-
-    & .author {
+    & h1 {
+      font-size: clamp(var(--f-h2), var(--f-h1), calc(1vh + 3vw));
       text-align: center;
-      font-size: 2rem;
+
+      & span {
+      font-size: clamp(var(--f-h1), 8rem, calc(2vh + 5vw));
+      display: block;
+      margin-bottom: -0.5rem;
+      }
     }
+
+    & div {
+      padding-bottom: 10dvh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      font-size: clamp(1.5rem, 2rem, calc(1vh + 2vw));
+      
+      & .author {
+      text-align: center;
+      }
+
+      & .copy {
+        margin-top: 0.5rem;
+      }
+    }
+
   }
 }
 
@@ -193,25 +215,36 @@ main {
 }
 
 section {
-  margin-block: 8rem;
-}
+  margin-block: 12rem;
+  position: relative;
 
-h1 {
-  font-size: var(--f-h1);
-  text-align: center;
+  &::before {
+    content: '';
+    position: absolute;
+    top: -5rem;
+    width: 20%;
+    height: 1px;
+    background-color: #c1aa886b;
+    margin-inline: auto;
+    left: 40%;
+    box-shadow: 0 2px 3px #00000017;
+  }
 }
 
 
 h2,
 section > span {
-  font-size: var(--f-h2);
+  font-size: clamp(var(--f-h3), var(--f-h2), 10vw);
   font-weight: bold;
+  line-height: 1.2;
+  margin-top: 1rem;
+  padding-top: 3rem;  
 }
 
 h3 {
-  font-size: var(--f-h3);
+  font-size: clamp(var(--f-h4), var(--f-h3), 8vw);
   font-weight: bold;
-  margin-top: 2rem;
+  margin-top: 3rem;
   margin-bottom: 1rem;
 }
 
@@ -236,13 +269,17 @@ strong {
 }
 
 .insert {
-  padding: 1rem;
+  padding: 1.5rem;
   background-color: white;
   border: 1px solid #00000017;
   margin-block: 2rem;
   border-radius: 4px;
   background: radial-gradient(white,#fffdf9);
   box-shadow: 2px 4px 10px #00000017;
+
+  & h4:first-of-type {
+    margin-top: 0;
+  }
 }
 
 .col-2 {
@@ -308,6 +345,7 @@ strong {
   .toc-container {
     grid-column: 3 / 4;
     bottom: unset;
+    padding-top: 11rem;
     padding-inline: unset;
     top:0;
     transform: unset;
@@ -325,7 +363,6 @@ strong {
   }
   .insert,
   .quote {
-    padding-inline: 2.5rem;
-    padding-block: 2rem;
+    padding: 2.5rem;
   }
 }
