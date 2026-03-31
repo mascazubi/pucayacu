@@ -189,6 +189,10 @@ main {
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
+  height: 90dvh;
+  overflow-y: scroll;
+  padding-bottom: 2rem;
+  padding-right: 1rem;
 
   .h2 {
     font-weight: 500;
@@ -351,9 +355,10 @@ strong {
     grid-column: 3 / 4;
     bottom: unset;
     padding-top: 11rem;
-    padding-inline: unset;
     top:0;
     transform: unset;
+    border-left: 1px solid #e1d5c4;
+    padding-left: 2rem;
   }
   .toc-handle {
     display: none;
