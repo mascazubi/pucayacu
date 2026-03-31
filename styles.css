@@ -189,6 +189,10 @@ main {
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
+
+  .h2 {
+    font-weight: 500;
+  }
   
   .h3,
   .h4 {
