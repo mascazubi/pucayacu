@@ -39,6 +39,36 @@ function htmlTableOfContents (documentRef) {
     });
 }
 
+/**
+ * Toggle the table of contents container visibility
+ */
+function toggleTOC() {
+    var tocContainer = document.querySelector('.toc-container');
+    if (tocContainer) {
+        tocContainer.classList.toggle('visible');
+    }
+}
+
+// Initialize TOC toggle functionality when DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+    var tocHandle = document.querySelector('.toc-handle');
+    var tocContainer = document.querySelector('.toc-container');
+    
+    if (tocHandle) {
+        tocHandle.addEventListener('click', toggleTOC);
+    }
+    
+    // Close TOC when clicking outside of it
+    if (tocContainer) {
+        document.addEventListener('click', function(event) {
+            // Check if click is outside the toc-container and it's currently visible
+            if (!tocContainer.contains(event.target) && tocContainer.classList.contains('visible')) {
+                tocContainer.classList.remove('visible');
+            }
+        });
+    }
+});
+
 try {
      module.exports = htmlTableOfContents;
 } catch (e) {

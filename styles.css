@@ -60,7 +60,7 @@ h1, h2, h3, h4, h5, h6 {
 :root {
   --p-sm: 1rem;
 
-  --f-h1: 5rem;
+  --f-h1: 5.5rem;
   --f-h2: 3.5rem;
   --f-h3: 2rem;
   --f-h4: 1.5rem;
@@ -160,20 +160,51 @@ main {
 
 .toc-container {
   grid-column:  1 / 4;
-  position: sticky;
-  bottom: 0;
+  position: fixed;
+  bottom: -50vh;
+  left: 0;
+  right: 0;
   padding-inline: var(--p-sm);
-  transform: translateY(100%);
   font-size: 1.25rem;
+  transition: bottom 0.3s ease-in-out;
+  background-color: white;
+  border-top: 1px solid var(--light-gray);
+  z-index: 100;
+  box-shadow: 0 3px 15px #00000038;
+}
+
+.toc-container.visible {
+  bottom: 0;
 }
 
 .toc-handle {
-  display: block;
+  display: flex;
   text-align: center;
   border: none;
   background-color: var(--light-blue);
   width: 100%;
   cursor: pointer;
+  padding-block: .5rem 1rem;
+  justify-content: center;
+  font-weight: medium;
+  color: var(--gray);
+  align-items: center;
+}
+
+.arrow {
+  display: inline-block;
+  transition: transform 0.3s ease-in-out;
+  margin-right: 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.toc-container.visible .arrow {
+  transform: rotate(180deg);
+}
+
+.toc-container.visible .toc-handle {
+  align-items: unset;
 }
 
 .toc-index {
@@ -183,14 +214,15 @@ main {
 }
 
 #toc {
-  max-width: 35ch;
+  max-width: unset;
   min-width: 20ch;
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
-  overflow-y: scroll;
+  overflow-y: auto;
   padding-bottom: 2rem;
-  padding-right: 1rem;
+  padding-inline: 0;
+  max-height: 50vh;
 
   .h2 {
     font-weight: 600;
@@ -240,13 +272,24 @@ section {
 }
 
 
-h2,
-section > span {
+
+h2 {
+  font-size: clamp(var(--f-h2), var(--f-h1), 15vw);
+  font-weight: bolder;
+  line-height: 1.1;
+}
+.fake-h2 {
   font-size: clamp(var(--f-h3), var(--f-h2), 10vw);
   font-weight: bold;
   line-height: 1.2;
   margin-top: 1rem;
   padding-top: 3rem;  
+}
+
+.chapter h2 > span {
+  display: block;
+  font-size: clamp(var(--f-h3), var(--f-h2), 10vw);
+  font-weight: bold;
 }
 
 h3 {
@@ -353,19 +396,29 @@ strong {
   .toc-container {
     grid-column: 3 / 4;
     bottom: unset;
+    position: unset;
     padding-top: 11rem;
     top:0;
+    left: unset;
+    right: unset;
     transform: unset;
+    background-color: transparent;
+    border-top: unset;
+    z-index: 1;
   }
   .toc-handle {
     display: none;
   }
   #toc {
-    height: 80dvh;
+    height: 82dvh;
+    max-height: unset;
+    padding-right: 1.75rem;
+
   }
   .toc {
     position: sticky;
-    top:2rem;
+    max-width: 40ch;
+    top: 3rem;
     padding-top: 2rem;
     margin-top: 1rem;
     border-left: 1px solid var(--light-gray);
