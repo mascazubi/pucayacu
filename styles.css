@@ -189,13 +189,12 @@ main {
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
-  height: 90dvh;
   overflow-y: scroll;
   padding-bottom: 2rem;
   padding-right: 1rem;
 
   .h2 {
-    font-weight: 500;
+    font-weight: 600;
   }
   
   .h3,
@@ -357,16 +356,20 @@ strong {
     padding-top: 11rem;
     top:0;
     transform: unset;
-    border-left: 1px solid #e1d5c4;
-    padding-left: 2rem;
   }
   .toc-handle {
     display: none;
   }
+  #toc {
+    height: 80dvh;
+  }
   .toc {
     position: sticky;
-    top:0;
+    top:2rem;
     padding-top: 2rem;
+    margin-top: 1rem;
+    border-left: 1px solid #e1d5c4;
+    padding-left: 2rem;
   }
   .toc-index {
     display: block;
