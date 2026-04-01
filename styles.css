@@ -65,18 +65,17 @@ h1, h2, h3, h4, h5, h6 {
   --f-h3: 2rem;
   --f-h4: 1.5rem;
 
-  --light-blue: #c1e4dd50;
-  --dark-blue: #9bbdb63b;
   --yellow: wheat;
   --light-yellow: #f8f5f0;
-  --accent-yellow: #c1aa88;
-  --dark-gray: #1e1e1e;
-  --light-gray: #1e1e1ecd;
+  --accent: #1e1e1e;
+  --secondary: #c1aa88;
+  --gray: #555;
+  --light-gray: #c3c3c3;
 }
 
 ::selection {
   color: var(--light-yellow);
-  background: var(--dark-gray);
+  background: var(--accent);
 }
 
 body {
@@ -86,7 +85,7 @@ body {
   font-size: 22px;
   font-family: "EB Garamond", Georgia, 'Times New Roman', Times, serif;
   background-color:var(--light-yellow);
-  color: var(--dark-gray);
+  color: var(--accent);
 }
 
 .cover {
@@ -180,7 +179,7 @@ main {
 .toc-index {
   display: none;
   margin-bottom: 1rem;
-  color: #6e6e6e;
+  color: var(--light-gray);
 }
 
 #toc {
@@ -207,16 +206,18 @@ main {
     text-decoration-line: none;
     text-decoration-color: transparent;
     text-decoration-thickness: 2px;
-    color: var(--light-gray);
+    color: var(--gray);
+    line-height: 1.4;
     cursor: pointer;
     padding-block: .25rem;
     border-radius: .25rem;
     transition: text-decoration-color .3s ease, color .3s ease;
+    
     &:hover {
       text-decoration-line: underline;
-      text-decoration-color: var(--accent-yellow);
-      text-decoration-thickness: 3px;
-      color: var(--dark-gray);
+      text-decoration-color: var(--accent);
+      text-decoration-thickness: 2px;
+      color: var(--accent);
 
     }
   }
@@ -232,10 +233,9 @@ section {
     top: -5rem;
     width: 20%;
     height: 1px;
-    background-color: #c1aa886b;
+    background-color: var(--light-gray);
     margin-inline: auto;
     left: 40%;
-    box-shadow: 0 2px 3px #00000017;
   }
 }
 
@@ -327,7 +327,7 @@ strong {
     font-size: 7rem;
     z-index: -1;
     line-height: 1;
-    color: var(--accent-yellow);
+    color: var(--accent);
   }
 
   &::before {
@@ -368,7 +368,7 @@ strong {
     top:2rem;
     padding-top: 2rem;
     margin-top: 1rem;
-    border-left: 1px solid #e1d5c4;
+    border-left: 1px solid var(--light-gray);
     padding-left: 2rem;
   }
   .toc-index {
