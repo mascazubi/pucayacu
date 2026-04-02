@@ -72,7 +72,7 @@ h1, h2, h3, h4, h5, h6 {
   --gray: #555;
   --light-gray: #c3c3c3;
   
-  font-size: 22px;
+  font-size: 21px;
 }
 
 ::selection {
@@ -362,7 +362,6 @@ li {
 
 p {
   text-indent: 2rem;
-  text-align: justify;
 }
 
 strong {
@@ -455,7 +454,7 @@ figure {
   section {  
     grid-template-columns: 1fr 67ch;
 
-    :not(figure, img, .insert) {
+    :not(figure, img, .insert, figcaption) {
       grid-column: 2 / 3;
       max-width: 67ch;
       padding-inline: unset;
