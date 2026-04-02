@@ -263,6 +263,10 @@ section {
   grid-template-columns: 1fr min(1fr, 67ch);
   gap: 0 1rem;
 
+  > :not(figure, img, figcaption, blockquote) {
+    padding-inline: var(--p-sm);
+  }
+
   &::before {
     content: '';
     position: absolute;
@@ -278,7 +282,6 @@ section {
 
   :not(figure, img, figcaption, .insert) {
     grid-column: 1 / 3;
-    padding-inline: var(--p-sm);
     max-width: 67ch;
   }
 
@@ -306,7 +309,6 @@ section {
     figcaption {
       font-size: .85rem;
       text-align: left;
-      max-width: 77ch;
       padding-inline: 1rem;
       margin-top: .5rem;
       color: var(--gray);
@@ -340,7 +342,7 @@ h2 {
 h3 {
   font-size: clamp(var(--f-h4), var(--f-h3), 8vw);
   font-weight: bold;
-  margin-top: 2.75rem;
+  margin-top: 2.5rem;
   margin-bottom: .5rem;
 }
 
@@ -352,16 +354,13 @@ h4 {
 * + ol,
 *  + ul,
 *  + strong,
-* + p {
+* + p,
+p + div {
   margin-top: 1rem;
 }
 
 li {
   margin-left: 1rem;
-}
-
-p {
-  text-indent: 2rem;
 }
 
 strong {
@@ -371,6 +370,7 @@ strong {
 .insert {
   grid-column: 1 / 3;
   padding-block: 1.25rem;
+  padding-inline: 1rem;
   background-color: white;
   border: 1px solid #00000017;
   margin-block: 2rem;
@@ -409,7 +409,8 @@ strong {
 }
 
 .quote {
-  padding: 2rem;
+  padding-inline: 2.5rem;
+  padding-block: 2rem;
   margin-block: 2rem;
   position: relative;
   font-style:oblique;
@@ -427,13 +428,13 @@ strong {
   &::before {
     content: '“';
     top: -18px;
-    left: -14px;
+    left: 0px;
   }
 
   &::after {
     content: '”';
     bottom: -60px;
-    right: 18px;
+    right: 30px;
   }
 }
 
@@ -452,13 +453,17 @@ figure {
     margin-inline: unset;
   }
   section {  
-    grid-template-columns: 1fr 67ch;
+    grid-template-columns: 1fr 72ch;
 
     :not(figure, img, .insert, figcaption) {
       grid-column: 2 / 3;
-      max-width: 67ch;
+      max-width: 72ch;
+    }
+
+    :not(figure, img, .insert, figcaption, blockquote) {
       padding-inline: unset;
     }
+
     figure {
       grid-column: 1 / 3;
       place-self: end;
@@ -495,7 +500,7 @@ figure {
     bottom: unset;
     position: unset;
     padding-top: 11rem;
-    padding-inline: 2rem;
+    padding-inline: 1.5rem;
     top:0;
     left: unset;
     right: unset;
@@ -511,7 +516,7 @@ figure {
   #toc {
     height: 82dvh;
     max-height: unset;
-    padding-right: 1.75rem;
+    padding-right: 1.5rem;
 
   }
   .toc {
@@ -520,13 +525,13 @@ figure {
     top: 2.5rem;
     padding-top: 2rem;
     border-left: 1px solid var(--light-gray);
-    padding-left: 2rem;
+    padding-left: 1.5rem;
   }
   .toc-index {
     display: block;
   }
-  .insert,
-  .quote {
-    padding: 1.5rem;
+  .insert {
+    padding-block: 1.5rem;
+    padding-inline: 1.5rem;
   }
 }
