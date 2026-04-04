@@ -63,7 +63,7 @@ h1, h2, h3, h4, h5, h6 {
   --f-h1: 4.5rem;
   --f-h2: 2.5rem;
   --f-h3: 1.75rem;
-  --f-h4: 1.25rem;
+  --f-h4: 1.125rem;
 
   --yellow: wheat;
   --light-yellow: #f8f5f0;
@@ -581,6 +581,18 @@ tbody tr:nth-child(even) {
   td {
 	  text-align: start;
   }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
 
 @media only screen and (min-width: 1050px) {
