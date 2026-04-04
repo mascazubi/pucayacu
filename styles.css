@@ -72,7 +72,10 @@ h1, h2, h3, h4, h5, h6 {
   --gray: #555;
   --light-gray: #c3c3c3;
   
-  font-size: 21px;
+  --body-font: "EB Garamond", Georgia, 'Times New Roman', Times, serif;
+  --body-font-size: 21px;
+
+  font-size: var(--body-font-size);
 }
 
 ::selection {
@@ -84,7 +87,7 @@ body {
   position: relative;
   display: grid;
   grid-template-columns: 1fr clamp(350px, 70ch, 100%) 1fr;
-  font-family: "EB Garamond", Georgia, 'Times New Roman', Times, serif;
+  font-family: var(--body-font);
   background-color:var(--light-yellow);
   color: var(--accent);
 }
@@ -160,10 +163,11 @@ main {
 .toc-container {
   grid-column:  1 / 4;
   position: fixed;
-  bottom: -50vh;
+  bottom: -64vh;
   left: 0;
   right: 0;
   padding-inline: var(--p-sm);
+  padding-bottom: 6rem;
   font-size: .9rem;
   transition: bottom 0.3s ease-in-out;
   background-color: white;
@@ -258,13 +262,11 @@ main {
 section {
   margin-block: 12rem;
   position: relative;
-  grid-column: 1 / 3;
   display: grid;
-  grid-template-columns: 1fr min(1fr, 67ch);
-  gap: 0 1rem;
+  grid-template-columns: 1fr min(77ch, 100%);
 
-  > :not(figure, img, figcaption, blockquote) {
-    padding-inline: var(--p-sm);
+  > :not(figure, img, figcaption, .quote) {
+    margin-inline: var(--p-sm);
   }
 
   &::before {
@@ -280,9 +282,8 @@ section {
     grid-column: 1 / 3;
   }
 
-  :not(figure, img, figcaption, .insert) {
-    grid-column: 1 / 3;
-    max-width: 67ch;
+  :not(figure, img, figcaption) {
+    grid-column: 2 / 3;
   }
 
   span:not(.fake-h2) {
@@ -368,13 +369,12 @@ strong {
 }
 
 .insert {
-  grid-column: 1 / 3;
+  grid-column: 2 / 3;
   padding-block: 1.25rem;
   padding-inline: 1rem;
   background-color: white;
   border: 1px solid #00000017;
   margin-block: 2rem;
-  margin-inline: .5rem;
   border-radius: 4px;
   background: radial-gradient(white,#fffdf9);
   box-shadow: 2px 4px 10px #00000017;
@@ -442,6 +442,143 @@ figure {
   margin-block: 1.5rem;
 }
 
+/* tables */
+
+.table-wrapper {
+  overflow: scroll;
+}
+
+table {
+  --color: rgb(228, 228, 228);
+  --border-color: rgb(72, 72, 72);
+
+	display: table;
+  width: max(26rem, 100%);
+  border-spacing: 2px;
+  border-collapse: collapse;
+  box-sizing: border-box;
+  text-indent: 0;
+  text-align: left;
+  table-layout: fixed;
+  font-family:'SF Mono', 'Cascadia Code', 'Consolas', 'Courier New', Courier, monospace;
+  font-size: medium;
+  margin-block: 1rem;
+}
+
+th,
+caption {
+	text-align: start;
+}
+
+caption {
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-align: left;
+  font-family: var(--body-font);
+  font-size: var(--body-font-size);
+}
+
+thead th:not(:first-child),
+td {
+	text-align: end;
+}
+
+tr {
+	border-bottom: 1px solid var(--border-color);
+}
+
+td {
+  font-weight: normal;
+}
+
+th,
+td {
+	/* border: 1px solid var(--color); */
+	padding: 0.25rem 0.5rem;
+
+}
+
+thead {
+	border-block-end: 2px solid var(--border-color);
+}
+
+tfoot {
+	border-block: 2px solid var(--border-color);
+	background: var(--color);
+}
+
+tbody tr:nth-child(even) {
+	background: color-mix(in srgb, var(--color), transparent 70%);
+}
+
+/* table 1 */
+#table-1 {
+  th {
+    min-width: 16ch;
+  }
+  th:first-of-type {
+	  width: 20ch;
+  }
+}
+
+/* table 2 */
+#table-2 {
+  th {
+    min-width: 16ch;
+  }
+  th:first-of-type {
+	  width: 10ch;
+  }
+  th:nth-of-type(3) {
+	  width: 25ch;
+  }
+}
+
+/* table 3 */
+#table-3 {
+  th:first-of-type {
+	  width: 12ch;
+  }
+}
+
+/* table 4 */
+#table-4 {
+  thead th,
+  td {
+	  text-align: center;
+  }
+}
+
+/* table 5 */
+#table-5 {
+  th:first-of-type {
+	  width: 10ch;
+  }
+  thead th:not(:first-child),
+  td {
+	  text-align: end;
+  }
+}
+
+/* table 6 */
+#table-6 {
+  th:first-of-type {
+	  width: 10ch;
+  }
+  thead th:not(:first-child),
+  td {
+	  text-align: end;
+  }
+}
+
+/* table 7 */
+#table-7 {
+  thead th:not(:first-child),
+  td {
+	  text-align: start;
+  }
+}
+
 @media only screen and (min-width: 1050px) {
   body{
     gap: 0;
@@ -455,9 +592,8 @@ figure {
   section {  
     grid-template-columns: 1fr 72ch;
 
-    :not(figure, img, .insert, figcaption) {
+    :not(figure, img, figcaption) {
       grid-column: 2 / 3;
-      max-width: 72ch;
     }
 
     :not(figure, img, .insert, figcaption, blockquote) {
@@ -514,7 +650,7 @@ figure {
     display: none;
   }
   #toc {
-    height: 82dvh;
+    height: 80dvh;
     max-height: unset;
     padding-right: 1.5rem;
 
