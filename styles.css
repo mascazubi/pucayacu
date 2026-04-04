@@ -213,7 +213,7 @@ main {
 .toc-index {
   display: none;
   margin-bottom: 1rem;
-  color: var(--light-gray);
+  color: var(--gray);
 }
 
 #toc {
@@ -457,7 +457,7 @@ table {
   --border-color: rgb(72, 72, 72);
 
 	display: table;
-  width: max(26rem, 100%);
+  width: auto;
   border-spacing: 2px;
   border-collapse: collapse;
   box-sizing: border-box;
@@ -689,5 +689,9 @@ tbody tr:nth-child(even) {
   .insert {
     padding-block: 1.5rem;
     padding-inline: 1.5rem;
+  }
+
+  table {
+    width: max(26rem, 100%);
   }
 }
