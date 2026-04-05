@@ -98,7 +98,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100svh;
 
   & img {
     display: block;
@@ -135,7 +135,7 @@ body {
     }
 
     & div {
-      padding-bottom: 10dvh;
+      padding-bottom: 3em;
       display: flex;
       flex-direction: column;
       justify-content: center;
