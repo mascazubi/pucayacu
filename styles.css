@@ -200,8 +200,11 @@ main {
   display: inline-block;
   transition: transform 0.3s ease-in-out;
   margin-right: 16px;
-  font-size: 1rem;
-  font-weight: bold;
+
+  svg {
+    stroke: var(--gray);
+  }
+
 }
 
 .toc-container.visible .arrow {
