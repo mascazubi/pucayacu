@@ -167,7 +167,6 @@ main {
   padding-bottom: env(safe-area-inset-bottom);
   left: 0;
   right: 0;
-  padding-inline: var(--p-sm);
   font-size: .9rem;
   transition: bottom 0.3s ease-in-out;
   background-color: white;
@@ -189,9 +188,15 @@ main {
   cursor: pointer;
   padding-block: .75rem;
   justify-content: center;
-  font-weight: medium;
+  font-weight: 500;
   color: var(--gray);
   align-items: center;
+  -webkit-tap-highlight-color: transparent;
+
+  /* &:hover {
+    background-color: rgb(222, 222, 222);
+  } */
+
 }
 
 .arrow {
@@ -224,7 +229,7 @@ main {
   gap: 0.125rem;
   overflow-y: auto;
   padding-bottom: 8rem;
-  padding-inline: 0;
+  padding-inline: var(--p-sm);
   max-height: 50vh;
 
   .h2 {
@@ -248,6 +253,7 @@ main {
     padding-block: .25rem;
     border-radius: .25rem;
     transition: text-decoration-color .3s ease, color .3s ease;
+    -webkit-tap-highlight-color: transparent;
     
     &:hover {
       text-decoration-line: underline;
@@ -272,7 +278,7 @@ section {
   &::before {
     content: '';
     position: absolute;
-    top: -5rem;
+    top: -4rem;
     width: 20%;
     height: 1px;
     background-color: var(--light-gray);
@@ -449,7 +455,7 @@ figure {
 /* tables */
 
 .table-wrapper {
-  overflow: scroll;
+  overflow-x: auto;
 }
 
 table {
@@ -464,14 +470,15 @@ table {
   text-indent: 0;
   text-align: left;
   table-layout: fixed;
-  font-family:'SF Mono', 'Cascadia Code', 'Consolas', 'Courier New', Courier, monospace;
+  font-family:'Cascadia Code', 'SF Mono', 'Consolas', 'Courier New', Courier, monospace;
   font-size: medium;
   margin-block: 1rem;
 }
 
 th,
-caption {
+caption, {
 	text-align: start;
+  font-size: .8rem;
 }
 
 caption {
@@ -512,17 +519,31 @@ tfoot {
 }
 
 tbody tr:nth-child(even) {
-	background: color-mix(in srgb, var(--color), transparent 70%);
+	background: color-mix(in srgb, var(--color), transparent 65%);
 }
 
 /* table 1 */
 #table-1 {
-  th {
-    min-width: 16ch;
+  tr.first-line {
+    border-bottom: unset;
+
+    th {
+      min-width: 13ch;
+      text-align: end;
+    }
+  } 
+  tr.first-line th:first-of-type {
+	  width: 14ch;
+    text-align: start;
   }
-  th:first-of-type {
-	  width: 20ch;
+  tr:not(first-line) th {
+    text-align: end;
   }
+
+  td:first-of-type {
+    text-align: start;
+  }
+
 }
 
 /* table 2 */
