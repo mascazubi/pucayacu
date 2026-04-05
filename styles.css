@@ -193,7 +193,7 @@ main {
   color: var(--gray);
   align-items: center;
   -webkit-tap-highlight-color: transparent;
-  margin-bottom: .5rem;
+  margin-bottom: .75rem;
 }
 
 .arrow {
