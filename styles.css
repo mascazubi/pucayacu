@@ -645,7 +645,7 @@ tbody tr:nth-child(even) {
 }
 .bio {
   float: left;
-  shape-outside: url(/images/nestor.png);
+  shape-outside: url(images/nestor.png);
   shape-margin: 1rem;
   width: min(16em, 45vw);
   aspect-ratio: 1;
